@@ -9,17 +9,17 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          working-directory: wasm
+          args: --manifest-path wasm/Cargo.toml
       - uses: actions-rs/toolchain@v1
         with:
-          working-directory: wasm
           profile: minimal
           toolchain: stable
           override: true
+          args: --manifest-path wasm/Cargo.toml
       - uses: actions-rs/cargo@v1
         with:
-          working-directory: wasm
           command: check
+          args: --manifest-path wasm/Cargo.toml
 
   fmt:
     name: Rustfmt
@@ -30,19 +30,18 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          working-directory: wasm
+          args: --manifest-path wasm/Cargo.toml
       - uses: actions-rs/toolchain@v1
         with:
-          working-directory: wasm
           profile: minimal
           toolchain: stable
           override: true
+          args: --manifest-path wasm/Cargo.toml
       - run: rustup component add rustfmt
       - uses: actions-rs/cargo@v1
         with:
-          working-directory: wasm
           command: fmt
-          args: --all -- --check
+          args: --manifest-path wasm/Cargo.toml --all -- --check
 
   clippy:
     name: Clippy
@@ -53,16 +52,15 @@ jobs:
     steps:
       - uses: actions/checkout@v2
         with:
-          working-directory: wasm
+          args: --manifest-path wasm/Cargo.toml
       - uses: actions-rs/toolchain@v1
         with:
-          working-directory: wasm
           profile: minimal
           toolchain: stable
           override: true
+          args: --manifest-path wasm/Cargo.toml
       - run: rustup component add clippy
       - uses: actions-rs/cargo@v1
         with:
-          working-directory: wasm
           command: clippy
-          args: -- -D warnings
+          args: --manifest-path wasm/Cargo.toml -- -D warnings
