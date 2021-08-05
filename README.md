@@ -15,11 +15,17 @@ cd wasm
 wasm-pack build --out-dir ../wasm-build
 ```
 
+Download npm dependencies:
+```
+cd react-app
+npm install
+```
+
 Run the React app:
 
 ```
 cd react-app
-yarn start
+npm start
 ```
 
 See more instructions for React in the [app folder](https://github.com/ivanschuetz/algonaut-react/tree/main/react-app)
